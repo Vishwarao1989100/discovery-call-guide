@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discovery Call Guide</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1c2233;--mute:#5d6680;--line:#dfe3ee;--acc:#2f5bea;--ok:#1f9d6b}
+:root[data-theme=dark]{--bg:#11141d;--card:#1a1f2d;--ink:#eef0f7;--mute:#9aa3bd;--line:#2c3348;--acc:#7b9bff;--ok:#43c791}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.brand{font-weight:600;color:var(--mute)}
+button{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+h1{font-size:2rem;margin:.6em 0 .2em}h2{margin:.2em 0}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:10px 0}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .25s}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.q.done{border-color:var(--ok)}.q label{display:flex;gap:10px;font-weight:600;cursor:pointer}
+.q input[type=checkbox]{width:20px;height:20px;margin-top:3px;accent-color:var(--ok)}
+.q small{display:block;color:var(--mute);margin:4px 0 8px 30px}
+textarea{width:100%;min-height:64px;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--bg);color:var(--ink);font:inherit;resize:vertical}
+.live .q:not(.cur){display:none}.live #practices,.live #hero{display:none}
+ul{padding-left:18px}li{margin:6px 0}.goal{border-left:4px solid var(--acc);padding-left:12px;margin-top:20px}
+#timer{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<main id="app">
+<header>
+  <span class="brand">Discovery Call Guide</span>
+  <div class="row" style="margin:0">
+    <span id="progress">0 / 7</span>
+    <span id="timer">00:00</span>
+    <button id="tstart" aria-label="Start or pause timer">▶</button>
+    <button id="treset" aria-label="Reset timer">↺</button>
+    <button id="live">Live mode</button>
+    <button id="copy">Copy notes</button>
+    <button id="new">New call</button>
+    <button id="theme" aria-label="Toggle theme">◐</button>
+  </div>
+</header>
+<div class="bar"><i id="fill"></i></div>
+
+<section id="hero">
+  <h1>Ask. Listen. Understand.</h1>
+  <p>Ask one question at a time. Listen actively. Build rapport, dig deep, and connect the learner’s goals to the right solution. Pick the call type, then tick each of the 7 questions as you ask it and jot notes as you go.</p>
+</section>
+
+<div class="row"><strong>Call type</strong>
+  <button id="t-prep" class="on">Interview prep / job search</button>
+  <button id="t-switch">SwitchUp (AI/ML/FDE)</button>
+</div>
+
+<section id="questions"></section>
+<div class="row" id="livenav" hidden><button id="prev">Previous</button><button id="next">Next</button></div>
+
+<section id="practices">
+  <h2>Discovery best practices</h2>
+  <ul>
+    <li><b>Ask one at a time.</b> Let the learner fully answer before moving on.</li>
+    <li><b>Listen and validate.</b> Reflect their answer back with follow-up questions.</li>
+    <li><b>Explore depth.</b> Technical depth, challenges, motivations and career goals.</li>
+    <li><b>Personalize the value.</b> Connect their pain points to the right program.</li>
+    <li><b>For AI learners.</b> Probe current AI exposure, tools, frameworks and projects.</li>
+    <li><b>For job change / interview prep.</b> Interview history, target companies, comp goals and challenges.</li>
+  </ul>
+  <p class="goal"><b>Our goal:</b> Uncover the real motivation, identify the right learning path, and help every learner achieve their career goals.<br><em>You are the bridge to their success!</em></p>
+</section>
+</main>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
